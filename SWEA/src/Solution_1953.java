@@ -61,8 +61,7 @@ public class Solution_1953 {
 //				System.out.println();
 //			}
 
-			sb.append("#").append(t+1).append(" ")
-			.append(stack.size()).append("\n");
+			sb.append("#").append(t + 1).append(" ").append(stack.size()).append("\n");
 		}
 		System.out.println(sb);
 
@@ -84,28 +83,28 @@ public class Solution_1953 {
 			for (int s = 0; s < size; s++) {
 				Point temp;
 				temp = q.poll();
-				
-				if(map[temp.x][temp.y] == 1) {
+
+				if (map[temp.x][temp.y] == 1) {
 					up(temp.x, temp.y);
 					down(temp.x, temp.y);
 					left(temp.x, temp.y);
 					right(temp.x, temp.y);
-				} else if(map[temp.x][temp.y] == 2) {
+				} else if (map[temp.x][temp.y] == 2) {
 					up(temp.x, temp.y);
 					down(temp.x, temp.y);
-				} else if(map[temp.x][temp.y] == 3) {
+				} else if (map[temp.x][temp.y] == 3) {
 					left(temp.x, temp.y);
 					right(temp.x, temp.y);
-				} else if(map[temp.x][temp.y] == 4) {
+				} else if (map[temp.x][temp.y] == 4) {
 					up(temp.x, temp.y);
 					right(temp.x, temp.y);
-				} else if(map[temp.x][temp.y] == 5) {
+				} else if (map[temp.x][temp.y] == 5) {
 					right(temp.x, temp.y);
 					down(temp.x, temp.y);
-				} else if(map[temp.x][temp.y] == 6) {
+				} else if (map[temp.x][temp.y] == 6) {
 					left(temp.x, temp.y);
 					down(temp.x, temp.y);
-				} else if(map[temp.x][temp.y] == 7) {
+				} else if (map[temp.x][temp.y] == 7) {
 					left(temp.x, temp.y);
 					up(temp.x, temp.y);
 				}
@@ -113,54 +112,46 @@ public class Solution_1953 {
 			cnt++;
 		}
 	}
-	
+
 	static void up(int x, int y) {
 		int nx = x - 1;
 		int ny = y;
-		if (nx >= 0 && ny >= 0 && nx < N && ny < M
-				&& !visited[nx][ny] && (map[nx][ny] == 1
-				|| map[nx][ny] == 2
-				|| map[nx][ny] == 5 || map[nx][ny] == 6)) {
+		if (nx >= 0 && ny >= 0 && nx < N && ny < M && !visited[nx][ny]
+				&& (map[nx][ny] == 1 || map[nx][ny] == 2 || map[nx][ny] == 5 || map[nx][ny] == 6)) {
 			visited[nx][ny] = true;
 			q.offer(new Point(nx, ny));
 			stack.push(new Point(nx, ny));
 		}
 	}
-	
+
 	static void down(int x, int y) {
 		int nx = x + 1;
 		int ny = y;
-		if (nx >= 0 && ny >= 0 && nx < N && ny < M
-				&& !visited[nx][ny] && (map[nx][ny] == 1
-				|| map[nx][ny] == 2
-				|| map[nx][ny] == 4 || map[nx][ny] == 7)) {
+		if (nx >= 0 && ny >= 0 && nx < N && ny < M && !visited[nx][ny]
+				&& (map[nx][ny] == 1 || map[nx][ny] == 2 || map[nx][ny] == 4 || map[nx][ny] == 7)) {
 			visited[nx][ny] = true;
 			q.offer(new Point(nx, ny));
 			stack.push(new Point(nx, ny));
 		}
 	}
-	
+
 	static void left(int x, int y) {
 		int nx = x;
 		int ny = y - 1;
-		if (nx >= 0 && ny >= 0 && nx < N && ny < M
-				&& !visited[nx][ny] && (map[nx][ny] == 1
-				|| map[nx][ny] == 3
-				|| map[nx][ny] == 4 || map[nx][ny] == 5)) {
+		if (nx >= 0 && ny >= 0 && nx < N && ny < M && !visited[nx][ny]
+				&& (map[nx][ny] == 1 || map[nx][ny] == 3 || map[nx][ny] == 4 || map[nx][ny] == 5)) {
 			visited[nx][ny] = true;
 			q.offer(new Point(nx, ny));
 			stack.push(new Point(nx, ny));
 //			System.out.println(temp.x+" "+temp.y+" "+nx+" "+ny+" "+map[nx][ny]);
 		}
 	}
-	
+
 	static void right(int x, int y) {
 		int nx = x;
 		int ny = y + 1;
-		if (nx >= 0 && ny >= 0 && nx < N && ny < M
-				&& !visited[nx][ny] && (map[nx][ny] == 1
-				|| map[nx][ny] == 3
-				|| map[nx][ny] == 6 || map[nx][ny] == 7)) {
+		if (nx >= 0 && ny >= 0 && nx < N && ny < M && !visited[nx][ny]
+				&& (map[nx][ny] == 1 || map[nx][ny] == 3 || map[nx][ny] == 6 || map[nx][ny] == 7)) {
 			visited[nx][ny] = true;
 			q.offer(new Point(nx, ny));
 			stack.push(new Point(nx, ny));
