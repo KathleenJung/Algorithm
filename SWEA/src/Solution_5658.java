@@ -15,10 +15,10 @@ public class Solution_5658 {
 			StringTokenizer st = new StringTokenizer(br.readLine());
 			int N = Integer.parseInt(st.nextToken());
 			int K = Integer.parseInt(st.nextToken());
-			int temp = N / 3;
+			int temp = N / 4;
 			String str = br.readLine();
 			List<Integer> list = new ArrayList<>();
-			for (int i = 0; i < temp - 1; i++) {
+			for (int i = 0; i < temp; i++) {
 				char c = str.charAt(0);
 				str = str.substring(1);
 				str += c;
