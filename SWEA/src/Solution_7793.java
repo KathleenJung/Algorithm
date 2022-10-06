@@ -14,6 +14,7 @@ public class Solution_7793 {
 	static boolean[][] visitedS;
 	static boolean isPossible;
 	static int cnt;
+	static Queue<Point> de;
 
 	static class Point {
 		int x;
@@ -42,6 +43,7 @@ public class Solution_7793 {
 			visitedS = new boolean[N][M];
 			map = new char[N][M];
 			cnt = 0;
+			de = new ArrayDeque<>();
 
 			for (int i = 0; i < N; i++) {
 				String str = br.readLine();
@@ -49,7 +51,8 @@ public class Solution_7793 {
 					map[i][j] = str.charAt(j);
 					// 수연이의 위치는 ‘S’, 여신의 공간은 ‘D’, 돌의 위치는 ‘X’, 악마는 ‘*’
 					if (map[i][j] == '*') { // 악마
-						devil = new Point(i, j, 'd');
+						de.offer(new Point(i, j, 'd'));
+						visitedD[i][j] = true;
 					} else if (map[i][j] == 'S') { // 수연
 						soo = new Point(i, j, 's');
 					} else if (map[i][j] == 'D') { // 여신
@@ -59,13 +62,8 @@ public class Solution_7793 {
 			}
 
 //			printMap();
-			if(devil == null) {
-				continue;
-			}
-			else {
-				solve();
-			}
-
+			solve();
+			
 //			printVisited(visitedD);
 //			printVisited(visitedS);
 
@@ -86,13 +84,11 @@ public class Solution_7793 {
 	}
 
 	private static void solve() {
-		Queue<Point> de = new ArrayDeque<>();
 		Queue<Point> so = new ArrayDeque<>();
-		visitedD[devil.x][devil.y] = true;
 		visitedS[soo.x][soo.y] = true;
-		de.offer(devil);
+//		de.offer(devil);
 		so.offer(soo);
-		while (!de.isEmpty()) {
+		while (!so.isEmpty()) {
 //			printVisited(visitedD);
 //			printVisited(visitedS);
 			int size = de.size();
