@@ -5,7 +5,7 @@ import java.util.ArrayDeque;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class Solution_7793 {
+public class Solution {
 	static int N, M;
 	static char[][] map;
 	static int[][] delta = { { -1, 0 }, { 0, 1 }, { 1, 0 }, { 0, -1 } };
@@ -109,9 +109,10 @@ public class Solution_7793 {
 				}
 			}
 			size = so.size();
+
+			cnt++;
 			for (int s = 0; s < size; s++) {
 				soo = so.poll();
-				cnt++;
 				for (int d = 0; d < 4; d++) {
 					int nx = soo.x + delta[d][0];
 					int ny = soo.y + delta[d][1];
