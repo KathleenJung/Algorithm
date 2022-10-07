@@ -109,7 +109,6 @@ public class Solution {
 				}
 			}
 			size = so.size();
-
 			cnt++;
 			for (int s = 0; s < size; s++) {
 				soo = so.poll();
