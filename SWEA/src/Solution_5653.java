@@ -24,13 +24,14 @@ public class Solution_5653 {
 
 		@Override
 		public String toString() {
-			return "Point [x=" + x + ", y=" + y + "]";
+			return "Point [x=" + (x-150) + ", y=" + (y-150) + "]";
 		}
 	}
 
 	static int N, M, K;
 	static int[][] map;
 	static Queue<Point> q;
+	static int[][] delta = {{-1,0},{0,1},{1,0},{0,-1}};
 
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -71,7 +72,7 @@ public class Solution_5653 {
 
 		while (time <= K) {
 			int size = q.size();
-			System.out.println(time + "시간 뒤 " + q.toString());
+			System.out.println(time + "시간 뒤 : q 사이즈는  " +q.size() + " "+ q.toString());
 			for (int i = 0; i < size; i++) {
 				Point p = q.poll();
 
@@ -93,59 +94,68 @@ public class Solution_5653 {
 						// 큐에 활성화 상태로 넣어주기
 						q.offer(new Point(p.x, p.y, p.amount, p.amount, true));
 						
+						for (int d = 0; d < 4; d++) {
+							int dx = p.x + delta[d][0];
+							int dy = p.y + delta[d][1];
+							if (tempMap[dx][dy] == 0 || (tempMap[dx][dy] >=100 && tempMap[dx][dy] < p.amount * 100)) {
+								tempMap[dx][dy] = p.amount * 100;
+								q.offer(new Point(dx, dy, p.amount, p.amount, false));
+							}
+						}
+						
 //						두 개 이상의 줄기 세포가 하나의 그리드 셀에 동시 번식하려고 하는 경우 생명력 수치가 높은 줄기 세포가 해당 그리드 셀을 혼자서 차지하게 된다.
-						if (tempMap[p.x - 1][p.y] == 0) {
-							tempMap[p.x - 1][p.y] = p.amount * 100;
-							q.offer(new Point(p.x-1, p.y, p.amount, p.amount, false));
-						}
-						else if(tempMap[p.x-1][p.y] >=100) {
-							if(tempMap[p.x-1][p.y] >= p.amount * 100) {
-								
-							}
-							else if(tempMap[p.x-1][p.y] < p.amount * 100) {
-								tempMap[p.x - 1][p.y] = p.amount * 100;
-								q.offer(new Point(p.x-1, p.y, p.amount, p.amount, false));
-							}
-						}
-						else if (tempMap[p.x + 1][p.y] == 0) {
-							tempMap[p.x + 1][p.y] = p.amount * 100;
-							q.offer(new Point(p.x+1, p.y, p.amount, p.amount, false));
-						}
-						else if(tempMap[p.x + 1][p.y] >=100) {
-							if(tempMap[p.x + 1][p.y] >= p.amount * 100) {
-								
-							}
-							else if(tempMap[p.x + 1][p.y] < p.amount * 100) {
-								tempMap[p.x + 1][p.y] = p.amount * 100;
-								q.offer(new Point(p.x+1, p.y, p.amount, p.amount, false));
-							}
-						}
-						else if (tempMap[p.x][p.y - 1] == 0) {
-							tempMap[p.x][p.y - 1] = p.amount * 100;
-							q.offer(new Point(p.x, p.y-1, p.amount, p.amount, false));
-						}
-						else if(tempMap[p.x][p.y - 1] >=100) {
-							if(tempMap[p.x][p.y - 1] >= p.amount * 100) {
-								
-							}
-							else if(tempMap[p.x][p.y - 1] < p.amount * 100) {
-								tempMap[p.x][p.y - 1] = p.amount * 100;
-								q.offer(new Point(p.x, p.y-1, p.amount, p.amount, false));
-							}
-						}
-//						else if (tempMap[p.x][p.y + 1] == 0 || (tempMap[p.x][p.y + 1] >=100 && tempMap[p.x][p.y + 1] < p.amount * 100)) {
-//							tempMap[p.x][p.y + 1] = p.amount * 100;
-//							q.offer(new Point(p.x, p.y+1, p.amount, p.amount, false));
+//						if (tempMap[p.x - 1][p.y] == 0) {
+//							tempMap[p.x - 1][p.y] = p.amount * 100;
+//							q.offer(new Point(p.x-1, p.y, p.amount, p.amount, false));
 //						}
-						else if(tempMap[p.x][p.y + 1] >=100) {
-							if(tempMap[p.x][p.y + 1] >= p.amount * 100) {
-								
-							}
-							else if(tempMap[p.x][p.y + 1] < p.amount * 100) {
-								tempMap[p.x][p.y + 1] = p.amount * 100;
-								q.offer(new Point(p.x, p.y+1, p.amount, p.amount, false));
-							}
-						}
+//						else if(tempMap[p.x-1][p.y] >=100) {
+//							if(tempMap[p.x-1][p.y] >= p.amount * 100) {
+//								
+//							}
+//							else if(tempMap[p.x-1][p.y] < p.amount * 100) {
+//								tempMap[p.x - 1][p.y] = p.amount * 100;
+//								q.offer(new Point(p.x-1, p.y, p.amount, p.amount, false));
+//							}
+//						}
+//						else if (tempMap[p.x + 1][p.y] == 0) {
+//							tempMap[p.x + 1][p.y] = p.amount * 100;
+//							q.offer(new Point(p.x+1, p.y, p.amount, p.amount, false));
+//						}
+//						else if(tempMap[p.x + 1][p.y] >=100) {
+//							if(tempMap[p.x + 1][p.y] >= p.amount * 100) {
+//								
+//							}
+//							else if(tempMap[p.x + 1][p.y] < p.amount * 100) {
+//								tempMap[p.x + 1][p.y] = p.amount * 100;
+//								q.offer(new Point(p.x+1, p.y, p.amount, p.amount, false));
+//							}
+//						}
+//						else if (tempMap[p.x][p.y - 1] == 0) {
+//							tempMap[p.x][p.y - 1] = p.amount * 100;
+//							q.offer(new Point(p.x, p.y-1, p.amount, p.amount, false));
+//						}
+//						else if(tempMap[p.x][p.y - 1] >=100) {
+//							if(tempMap[p.x][p.y - 1] >= p.amount * 100) {
+//								
+//							}
+//							else if(tempMap[p.x][p.y - 1] < p.amount * 100) {
+//								tempMap[p.x][p.y - 1] = p.amount * 100;
+//								q.offer(new Point(p.x, p.y-1, p.amount, p.amount, false));
+//							}
+//						}
+////						else if (tempMap[p.x][p.y + 1] == 0 || (tempMap[p.x][p.y + 1] >=100 && tempMap[p.x][p.y + 1] < p.amount * 100)) {
+////							tempMap[p.x][p.y + 1] = p.amount * 100;
+////							q.offer(new Point(p.x, p.y+1, p.amount, p.amount, false));
+////						}
+//						else if(tempMap[p.x][p.y + 1] >=100) {
+//							if(tempMap[p.x][p.y + 1] >= p.amount * 100) {
+//								
+//							}
+//							else if(tempMap[p.x][p.y + 1] < p.amount * 100) {
+//								tempMap[p.x][p.y + 1] = p.amount * 100;
+//								q.offer(new Point(p.x, p.y+1, p.amount, p.amount, false));
+//							}
+//						}
 					} else if (p.time != 0) {
 						p.time--;
 						q.offer(new Point(p.x, p.y, p.time, p.amount, false));
