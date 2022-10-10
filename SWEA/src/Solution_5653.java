@@ -24,14 +24,15 @@ public class Solution_5653 {
 
 		@Override
 		public String toString() {
-			return "Point [x=" + (x-150) + ", y=" + (y-150) + "]";
+			return "Point [x=" + x + ", y=" + y + ", time=" + time + ", amount=" + amount + ", active=" + active + "]";
 		}
+
 	}
 
 	static int N, M, K;
 	static int[][] map;
 	static Queue<Point> q;
-	static int[][] delta = {{-1,0},{0,1},{1,0},{0,-1}};
+	static int[][] delta = { { -1, 0 }, { 0, 1 }, { 1, 0 }, { 0, -1 } };
 
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -49,7 +50,7 @@ public class Solution_5653 {
 				st = new StringTokenizer(br.readLine());
 				for (int j = 150; j < 150 + M; j++) {
 					map[i][j] = Integer.parseInt(st.nextToken());
-					if(map[i][j] != 0) {
+					if (map[i][j] != 0) {
 						q.offer(new Point(i, j, map[i][j], map[i][j], false));
 					}
 				}
@@ -70,108 +71,70 @@ public class Solution_5653 {
 			}
 		}
 
-		while (time <= K) {
+		while (time < K) {
 			int size = q.size();
-			System.out.println(time + "시간 뒤 : q 사이즈는  " +q.size() + " "+ q.toString());
+//			System.out.println(time + "시간 뒤 : q 사이즈는  " + q.size() + " " + q.toString());
 			for (int i = 0; i < size; i++) {
 				Point p = q.poll();
+				p.time--;
 
-				// 비활성화 상태일 때 타임이 0이 되면 활성화 시킨 후, 상하좌우로 퍼뜨림
-				if (p.active == true) {
-					// 활성화 상태인데 타임이 0이 아니면 세포는 안 죽음
-					if (p.time != 0) {
-						p.time--;
-						q.offer(new Point(p.x, p.y, p.time, p.amount, true));
-					}
-					// 활성화 상태인데 타임 0이면 세포는 죽음
-					else if (p.time == 0) {
-
-					}
-				}
-				// 비활성화 상태인데 타임이 0이 아니면 타임을 감소
-				else if (p.active == false) {
+				// 비활성화 상태
+				if (p.active == false) {
+					// 비활성화 상태 + 타임이 0이면 세포 활성화 시킴
 					if (p.time == 0) {
-						// 큐에 활성화 상태로 넣어주기
 						q.offer(new Point(p.x, p.y, p.amount, p.amount, true));
-						
-						for (int d = 0; d < 4; d++) {
-							int dx = p.x + delta[d][0];
-							int dy = p.y + delta[d][1];
-							if (tempMap[dx][dy] == 0 || (tempMap[dx][dy] >=100 && tempMap[dx][dy] < p.amount * 100)) {
-								tempMap[dx][dy] = p.amount * 100;
-								q.offer(new Point(dx, dy, p.amount, p.amount, false));
-							}
-						}
-						
-//						두 개 이상의 줄기 세포가 하나의 그리드 셀에 동시 번식하려고 하는 경우 생명력 수치가 높은 줄기 세포가 해당 그리드 셀을 혼자서 차지하게 된다.
-//						if (tempMap[p.x - 1][p.y] == 0) {
-//							tempMap[p.x - 1][p.y] = p.amount * 100;
-//							q.offer(new Point(p.x-1, p.y, p.amount, p.amount, false));
-//						}
-//						else if(tempMap[p.x-1][p.y] >=100) {
-//							if(tempMap[p.x-1][p.y] >= p.amount * 100) {
-//								
-//							}
-//							else if(tempMap[p.x-1][p.y] < p.amount * 100) {
-//								tempMap[p.x - 1][p.y] = p.amount * 100;
-//								q.offer(new Point(p.x-1, p.y, p.amount, p.amount, false));
-//							}
-//						}
-//						else if (tempMap[p.x + 1][p.y] == 0) {
-//							tempMap[p.x + 1][p.y] = p.amount * 100;
-//							q.offer(new Point(p.x+1, p.y, p.amount, p.amount, false));
-//						}
-//						else if(tempMap[p.x + 1][p.y] >=100) {
-//							if(tempMap[p.x + 1][p.y] >= p.amount * 100) {
-//								
-//							}
-//							else if(tempMap[p.x + 1][p.y] < p.amount * 100) {
-//								tempMap[p.x + 1][p.y] = p.amount * 100;
-//								q.offer(new Point(p.x+1, p.y, p.amount, p.amount, false));
-//							}
-//						}
-//						else if (tempMap[p.x][p.y - 1] == 0) {
-//							tempMap[p.x][p.y - 1] = p.amount * 100;
-//							q.offer(new Point(p.x, p.y-1, p.amount, p.amount, false));
-//						}
-//						else if(tempMap[p.x][p.y - 1] >=100) {
-//							if(tempMap[p.x][p.y - 1] >= p.amount * 100) {
-//								
-//							}
-//							else if(tempMap[p.x][p.y - 1] < p.amount * 100) {
-//								tempMap[p.x][p.y - 1] = p.amount * 100;
-//								q.offer(new Point(p.x, p.y-1, p.amount, p.amount, false));
-//							}
-//						}
-////						else if (tempMap[p.x][p.y + 1] == 0 || (tempMap[p.x][p.y + 1] >=100 && tempMap[p.x][p.y + 1] < p.amount * 100)) {
-////							tempMap[p.x][p.y + 1] = p.amount * 100;
-////							q.offer(new Point(p.x, p.y+1, p.amount, p.amount, false));
-////						}
-//						else if(tempMap[p.x][p.y + 1] >=100) {
-//							if(tempMap[p.x][p.y + 1] >= p.amount * 100) {
-//								
-//							}
-//							else if(tempMap[p.x][p.y + 1] < p.amount * 100) {
-//								tempMap[p.x][p.y + 1] = p.amount * 100;
-//								q.offer(new Point(p.x, p.y+1, p.amount, p.amount, false));
-//							}
-//						}
-					} else if (p.time != 0) {
-						p.time--;
+					}
+					// 비활성화 상태 + 타임이 0이 아니면 아직 세포 활성화 시키지 않음
+					else if (p.time != 0) {
 						q.offer(new Point(p.x, p.y, p.time, p.amount, false));
 					}
 				}
+				// 활성화 상태
+				else if (p.active == true) {
+					// 활성화 상태 되고, 1시간 후 번식
+					if (p.time == p.amount - 1) {
+
+						// 활성 상태 상,하,좌,우 번식
+						for (int d = 0; d < 4; d++) {
+							int dx = p.x + delta[d][0];
+							int dy = p.y + delta[d][1];
+							if ((tempMap[dx][dy] >= 100 && tempMap[dx][dy] < p.amount * 100) || tempMap[dx][dy] == 0) {
+								tempMap[dx][dy] = p.amount * 100;
+							}
+						}
+					}
+					// 활성화 상태 + 타임이 0이 아니면
+					if (p.time != 0) {
+						q.offer(new Point(p.x, p.y, p.time, p.amount, true));
+					}
+					// 활성화 상태 + 타임 0
+					else if (p.time == 0) {
+						continue;
+					}
+				}
 			}
+//			print(tempMap);
 			for (int r = 0; r < tempMap.length; r++) {
 				for (int c = 0; c < tempMap.length; c++) {
-					if(tempMap[r][c] >= 100) {
-						map[r][c] = tempMap[r][c]/100;
-						tempMap[r][c]/=100;
+					if (tempMap[r][c] >= 100) {
+						map[r][c] = tempMap[r][c] / 100;
+						tempMap[r][c] /= 100;
+						q.offer(new Point(r, c, tempMap[r][c], tempMap[r][c], false));
 					}
 				}
 			}
 			time++;
 		}
+	}
+
+	private static void print(int[][] tempMap) {
+		for (int i = 140; i < 160; i++) {
+			for (int j = 140; j < 160; j++) {
+				System.out.print(tempMap[i][j] + " ");
+			}
+			System.out.println();
+		}
+		System.out.println();
 	}
 
 }
