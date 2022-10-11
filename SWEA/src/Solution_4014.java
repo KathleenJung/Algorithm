@@ -82,7 +82,6 @@ public class Solution_4014 {
 				}
 				idx = idx+X-1;
 				l = 0;
-				
 //				System.out.println("next " + idx);
 			}
 			else {
