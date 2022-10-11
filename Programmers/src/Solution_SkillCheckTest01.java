@@ -29,26 +29,6 @@ public class Solution_SkillCheckTest01 {
 		}
 		
 	}
-
-	private static String[] solve(String[] arr, int n) {
-		for (int i = 0; i < arr.length; i++) {
-			for (int j = 0; j < arr.length - 1; j++) {
-				if(arr[j].charAt(n) > arr[j+1].charAt(n)) {
-					String t = arr[j];
-					arr[j] = arr[j+1];
-					arr[j+1] = t;
-				}
-				if(arr[j].charAt(n) == arr[j+1].charAt(n)) {
-					if(arr[j].charAt(0) == arr[j+1].charAt(0)) {
-						String t = arr[j];
-						arr[j] = arr[j+1];
-						arr[j+1] = t;
-					}
-				}
-			}
-		}
-		return arr;
-	}
 	
 	private static String[] solve2(String[] arr, int n) {
 		List<String> list = new ArrayList<>();
