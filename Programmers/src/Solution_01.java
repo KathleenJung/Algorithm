@@ -3,7 +3,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class Solution_SkillCheckTest01 {
+public class Solution_01 {
 	
 	public static void main(String[] args) {
 		String[] arr = new String[3];
