@@ -74,7 +74,6 @@ public class Solution_1949 {
 		
 		map[x][y] -= k;
 		
-
 //		printMap();
 		
 		for (int i = 0; i < map.length; i++) {
