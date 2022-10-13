@@ -1,4 +1,3 @@
-
 public class Solution_002 {
 
 	public static void main(String[] args) {
