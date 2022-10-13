@@ -89,7 +89,7 @@ public class Solution_7793_2 {
 					int dx = su.x + delta[d][0];
 					int dy = su.y + delta[d][1];
 					
-					if(dx>=0&&dy>=0&&dx<N&&dy<M&&!visited[dx][dy]&&map[dx][dy]!='X') {
+					if(dx>=0&&dy>=0&&dx<N&&dy<M&&!visited[dx][dy]&&!visitedS[dx][dy]&&map[dx][dy]!='X') {
 						if(map[dx][dy] == 'D') {
 							isPossible = true;
 							return;
