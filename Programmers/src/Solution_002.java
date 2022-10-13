@@ -5,8 +5,9 @@ public class Solution_002 {
 		System.out.println(solution(3, 2));
 		System.out.println(solution(10, 5));
 	}
+
 	public static int solution(int num1, int num2) {
-        int answer = num1%num2;
-        return answer;
-    }
+		int answer = num1 % num2;
+		return answer;
+	}
 }
