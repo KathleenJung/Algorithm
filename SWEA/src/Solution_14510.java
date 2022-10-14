@@ -59,5 +59,4 @@ public class Solution_14510 {
 		}
 		return true;
 	}
-
 }
