@@ -29,7 +29,6 @@ public class Solution_2115 {
 				}
 			}
 
-			comb();
 			for (int i = 0; i < N; i++) {
 				for (int j = 0; j < N - M; j++) {
 					solve(i, j);
