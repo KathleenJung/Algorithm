@@ -19,7 +19,6 @@ public class Solution_5656_Sol {
 
 		int TC = Integer.parseInt(in.readLine());
 		for (int tc = 1; tc <= TC; tc++) {
-
 			StringTokenizer st = new StringTokenizer(in.readLine(), " ");
 
 			N = Integer.parseInt(st.nextToken());
