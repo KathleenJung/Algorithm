@@ -5,7 +5,6 @@ public class Solution_011 {
 		System.out.println(solution(3, 2));
 		System.out.println(solution(7, 3));
 		System.out.println(solution(1, 16));
-
 	}
 
 	public static int solution(double num1, double num2) {
