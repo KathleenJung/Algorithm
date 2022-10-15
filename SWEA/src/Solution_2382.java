@@ -6,7 +6,6 @@ import java.util.StringTokenizer;
 public class Solution_2382 {
     static class Mi {
         int x, y, m, d, a;
- 
         public Mi(int x, int y, int m, int d, int a) {
             super();
             this.x = x;
