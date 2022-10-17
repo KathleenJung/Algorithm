@@ -14,5 +14,4 @@ public class Solution_018 {
 		}
 		return answer;
 	}
-
 }
