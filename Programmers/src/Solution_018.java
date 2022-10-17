@@ -6,12 +6,13 @@ public class Solution_018 {
 		System.out.println(solution(10));
 		System.out.println(solution(4));
 	}
+
 	public static int solution(int n) {
-        int answer = 1;
-        while((6*answer)%n!=0) {
-        	answer++;
-        }
-        return answer;
-    }
+		int answer = 1;
+		while ((6 * answer) % n != 0) {
+			answer++;
+		}
+		return answer;
+	}
 
 }
