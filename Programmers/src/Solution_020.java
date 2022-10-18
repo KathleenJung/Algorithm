@@ -1,4 +1,5 @@
 // Programmers [코딩테스트 입문] 020. 옷가게 할인 받기
+
 public class Solution_020 {
 
 	public static void main(String[] args) {
