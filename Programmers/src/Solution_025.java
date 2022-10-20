@@ -1,4 +1,5 @@
 // Programmers [코딩테스트 입문] 025. 문자 반복 출력하기
+
 public class Solution_025 {
 	public static void main(String[] args) {
 		System.out.println(solution("hello", 3));
