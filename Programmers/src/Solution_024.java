@@ -1,4 +1,4 @@
-
+// Programmers [코딩테스트 입문] 024. 짝수 홀수 개수
 public class Solution_024 {
 
 	public static void main(String[] args) {
@@ -28,7 +28,7 @@ public class Solution_024 {
 				b++;
 			}
 		}
-		answer = new int[] { a, b };
+		answer = new int[] { b, a };
 		return answer;
 	}
 
