@@ -67,18 +67,15 @@ public class Main_14620 {
 					plant[i][j] = true;
 //					꽃 심고 상하좌우 꽃잎 펼치기
 					for (int d = 0; d < 4; d++) {
-						{
-							int nx = i + delta[d][0];
-							int ny = j + delta[d][1];
-							if (nx >= 0 && ny >= 0 && nx < N && ny < N) {
+						int nx = i + delta[d][0];
+						int ny = j + delta[d][1];
 //								꽃잎이 겹치는 경우
-								if (plant[nx][ny] == true) {
-									return;
-								} else {
-									plant[nx][ny] = true;
-								}
-							}
+						if (plant[nx][ny] == true) {
+							return;
+						} else {
+							plant[nx][ny] = true;
 						}
+
 					}
 				}
 			}
