@@ -69,7 +69,7 @@ public class Main_14620 {
 					for (int d = 0; d < 4; d++) {
 						int nx = i + delta[d][0];
 						int ny = j + delta[d][1];
-//								꽃잎이 겹치는 경우
+//						꽃잎이 겹치는 경우
 						if (plant[nx][ny] == true) {
 							return;
 						} else {
