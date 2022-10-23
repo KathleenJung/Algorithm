@@ -2,6 +2,7 @@ import java.util.ArrayDeque;
 import java.util.Queue;
 
 // 8) 깊이/너비 우선 탐색(DFS/BFS) > 3. 게임 맵 최단거리
+//	Programmers [깊이/너비 우선 탐색(DFS/BFS)] 03. 게임 맵 최단거리
 public class Solution_8003 {
 	static class Point {
 		int x, y;
