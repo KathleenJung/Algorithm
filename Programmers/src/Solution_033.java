@@ -1,6 +1,7 @@
+//Programmers [코딩테스트 입문] 033. 순서쌍의 개수
 
 public class Solution_033 {
-	
+
 	public static void main(String[] args) {
 		System.out.println(solution(20));
 		System.out.println(solution(100));
