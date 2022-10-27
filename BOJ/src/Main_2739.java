@@ -10,5 +10,4 @@ public class Main_2739 {
 		}
 		sc.close();
 	}
-
 }
