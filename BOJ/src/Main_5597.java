@@ -13,7 +13,7 @@ public class Main_5597 {
 		int[] array = new int[2];
 		int idx = 0;
 		for (int i = 1; i <= 30; i++) {
-			if(!arr[i]) {
+			if (!arr[i]) {
 				array[idx] = i;
 				idx++;
 			}
