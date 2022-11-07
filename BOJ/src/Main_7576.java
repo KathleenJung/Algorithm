@@ -6,6 +6,7 @@ import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class Main_7576 {
+//	BOJ G5 토마토
 	static int M, N;
 	static int[][] arr;
 	static int[][] delta = { { -1, 0 }, { 0, 1 }, { 1, 0 }, { 0, -1 } };
