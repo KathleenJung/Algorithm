@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Queue;
 import java.util.StringTokenizer;
-
+//	G3 나무 재테크
 public class Main_16235 {
 	static class Tree {
 		int x, y, z;
@@ -70,8 +70,11 @@ public class Main_16235 {
 		}
 		for (int i = 0; i < M; i++) {
 			st = new StringTokenizer(br.readLine());
-			int y = Integer.parseInt(st.nextToken());
+			// 문제 오류...?
+//			int y = Integer.parseInt(st.nextToken()); // 가로
+//			int x = Integer.parseInt(st.nextToken()); // 세로
 			int x = Integer.parseInt(st.nextToken());
+			int y = Integer.parseInt(st.nextToken());
 			int z = Integer.parseInt(st.nextToken()); // 나무의 나이
 			t[x - 1][y - 1].add(new Tree(z));
 		}
