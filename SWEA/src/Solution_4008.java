@@ -29,7 +29,7 @@ public class Solution_4008 {
 				num[i] = Integer.parseInt(st.nextToken());
 			}
 			solve(1, num[0]);
-			System.out.println("#" + (t+1) + " " + Math.abs(max - min));
+			System.out.println("#" + (t+1) + " " + (max - min));
 		}
 	}
 	private static void solve(int pos, int ans) {
