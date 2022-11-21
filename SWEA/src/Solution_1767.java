@@ -63,6 +63,13 @@ public class Solution_1767 {
 
 	private static void dfs(int index, int cnt) {
 		if (index == list.size()) {
+			if (max < cnt) {
+				max = cnt;
+				line = line();
+			} else if (max == cnt) {
+				line = Math.min(line, line());
+			}
+			
 			return;
 		}
 
@@ -93,12 +100,7 @@ public class Solution_1767 {
 			for (int i = 0; i < p.x; i++) {
 				visited[i][p.y] = true;
 			}
-			if (max < cnt + 1) {
-				max = cnt + 1;
-				line = line();
-			} else if (max == cnt + 1) {
-				line = Math.min(line, line());
-			}
+			
 			dfs(index + 1, cnt + 1);
 
 			// 롤백
@@ -120,13 +122,9 @@ public class Solution_1767 {
 			for (int i = p.x + 1; i < N; i++) {
 				visited[i][p.y] = true;
 			}
-			if (max < cnt + 1) {
-				max = cnt + 1;
-				line = line();
-			} else if (max == cnt + 1) {
-				line = Math.min(line, line());
-			}
+			
 			dfs(index + 1, cnt + 1);
+			
 			// 롤백
 			for (int i = p.x + 1; i < N; i++) {
 				visited[i][p.y] = false;
@@ -146,13 +144,9 @@ public class Solution_1767 {
 			for (int i = 0; i < p.y; i++) {
 				visited[p.x][i] = true;
 			}
-			if (max < cnt + 1) {
-				max = cnt + 1;
-				line = line();
-			} else if (max == cnt + 1) {
-				line = Math.min(line, line());
-			}
+			
 			dfs(index + 1, cnt + 1);
+			
 			// 롤백
 			for (int i = 0; i < p.y; i++) {
 				visited[p.x][i] = false;
@@ -173,13 +167,9 @@ public class Solution_1767 {
 			for (int i = p.y + 1; i < N; i++) {
 				visited[p.x][i] = true;
 			}
-			if (max < cnt + 1) {
-				max = cnt + 1;
-				line = line();
-			} else if (max == cnt + 1) {
-				line = Math.min(line, line());
-			}
+			
 			dfs(index + 1, cnt + 1);
+			
 			// 롤백
 			for (int i = p.y + 1; i < N; i++) {
 				visited[p.x][i] = false;
