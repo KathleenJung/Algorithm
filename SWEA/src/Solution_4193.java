@@ -44,7 +44,7 @@ public class Solution_4193 {
 			
 			solve();
 			
-			System.out.println(ans);
+			System.out.println("#" + (t+1) + " " + ans);
 		}
 	}
 	private static void solve() {
@@ -55,24 +55,28 @@ public class Solution_4193 {
 		q.offer(new Point(A, B));
 		
 		while(!q.isEmpty()) {
-			time++;
 			int size = q.size();
 			for (int s = 0; s < size; s++) {
 				Point p = q.poll();
+				
+				if(time %3 != 2) {
+					q.offer(new Point(p.x, p.y));
+				}
+				
 				for (int d = 0; d < 4; d++) {
 					int nx = p.x+delta[d][0];
 					int ny = p.y + delta[d][1];
 					if(nx>=0&&ny>=0&&nx<N&&ny<N&&(map[nx][ny]==0||(map[nx][ny]==2 && time %3 == 2))&&!visited[nx][ny]) {
 						visited[nx][ny] = true;
 						q.offer(new Point(nx, ny));
-						System.out.println(nx + " " + ny);
 						if(nx == C && ny == D) {
-							ans = time;
+							ans = time + 1;
 							return;
 						}
 					}
 				}
 			}
+			time++;
 		}
 	}
 
