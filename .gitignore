@@ -26,6 +26,8 @@ hs_err_pid*
 
 .recommenders/
 
+.idea/
+
 Exam/
 
 hit1get4/
@@ -43,3 +45,7 @@ SCS/
 **/.classpath
 
 **/.project
+
+*.iml
+
+**/.gitignore
